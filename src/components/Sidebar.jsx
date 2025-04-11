@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
    <aside id='sidebar'>
         <div className="title">
-            <i class="fa-solid fa-user-tie"></i>
+            <i className="fa-solid fa-user-tie"></i>
             <p>Dashbord User</p>
         </div>
 
@@ -14,7 +14,7 @@ const Sidebar = () => {
        <ul>
         <li>
             <a href="#">
-                <i class="fa-solid fa-toolbox"></i>
+                <i className="fa-solid fa-toolbox"></i>
                 Dashboard
             </a>
         </li>
