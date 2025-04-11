@@ -1,20 +1,18 @@
-import Navbar from "./components/Navbar"
-import Sidebar from "./components/Sidebar"
-import Main from "./components/Main"
+// import Navbar from "./components/Navbar"
+
 // import "animate.css"
 import './App.css'
-import { Inscription } from "./Admin/Inscription/Inscription"
+
+import { ContentBoard } from "./Admin/ContentBoard"
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   
 
   return (
-      <div className="container">
-        {/* <Navbar/>
-        <Sidebar/>
-        <Main/> */}
-        <Inscription/>
+      <div className="app">
+       {/* <Inscription/> */}
+       <ContentBoard/>
       </div>
   )
 }

@@ -21,7 +21,7 @@ body{
   background-color: #fff;
   color: var(--bg-admin);
 }
-.navbar{
+.navbarAmin{
   background-color: var(--bg-admin);
   color: #fff;
 }

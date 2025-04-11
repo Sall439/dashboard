@@ -2,7 +2,7 @@ import React from 'react'
 
 const InputForm = () => {
   return (
-    <form>
+    <form id='form'>
         <div className='form'>
             <i className="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder='Rechercher une livraison...' />

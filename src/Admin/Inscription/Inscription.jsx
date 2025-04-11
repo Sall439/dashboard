@@ -5,7 +5,7 @@ export const Inscription = () => {
         <div className="title">
             <h1 className="text-center font-bold text-4xl shadow-2xl rounded-[10px] text-[rgb(19,43,78)]">Inscrivez-vous </h1>
         </div>
-        <form action="" className="incription-form p-2">
+        <form action="" className="incription-form p-2 ">
             <div className="flex gap-4 w-full ">
               <div className="mb-3 w-full">
                 <label htmlFor="nom" className="block w-full">Nom</label>

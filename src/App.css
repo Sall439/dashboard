@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root{
     --bg-Body: rgb(59,74,97);
@@ -19,9 +19,9 @@
 }
 
 * {
-  padding: 0;
+  /* padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; */
   list-style-type: none;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
@@ -188,7 +188,7 @@ color: #fff;
   cursor: pointer;
 }
 
-form {
+#form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,14 +196,14 @@ form {
   margin-top: 20px;
 }
 
-form .form {
+#form .form {
   position: relative;
   width: 80%;
   display: flex;
   align-items: center;
 }
 
-form .form input {
+#form .form input {
   width: 100%;
   border: none;
   background-color: #ccc;
@@ -215,7 +215,7 @@ form .form input {
 }
 
 
-form .form i {
+#form .form i {
   position: absolute;
   margin: 0px 10px;
   right: 0;
