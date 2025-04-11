@@ -1,0 +1,26 @@
+.incription-form input{
+    border: 1px solid var(--bg-admin);
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: var(--bg-admin);
+    }
+    
+    .incription-form label{
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 600;
+       margin-left: 10px;
+       color: var(--bg-Body);
+    }
+    
+    .incription-form button{
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: none;
+        background-color: var(--bg-admin);
+        color: #fff;
+        cursor: pointer;
+    }
+    

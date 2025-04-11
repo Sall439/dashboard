@@ -1,3 +1,4 @@
+import "./Inscription.css"
 export const Inscription = () => {
     return <div className="content_inscription w-full flex justify-center items-center h-screen ">
         <div className="w-[600px] bg-[#fff] p-4 ">
