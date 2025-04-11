@@ -15,8 +15,8 @@ const CartUser = ({username, img, date, title_img}) => {
         </div>
 
         <div className="btn">
-            <button>Like <i class="fa-solid fa-thumbs-up"></i></button>
-            <button>Dislike <i class="fa-solid fa-thumbs-down"></i></button>
+            <button>Like <i className="fa-solid fa-thumbs-up"></i></button>
+            <button>Dislike <i className="fa-solid fa-thumbs-down"></i></button>
         </div>
     </div>
   )
