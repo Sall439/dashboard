@@ -1,42 +1,67 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+:root{
+    --bg-Body: rgb(59,74,97);
+    --sidebar: rgb(59,74,97);
+    --bg-admin: rgb(19,43,78);
   }
-  to {
-    transform: rotate(360deg);
-  }
+.app{
+    width: 100%;
+}
+.icons>*{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.icons>*:hover{
+    color: #28cb8b;
+    transform: scale(1.2);
+    transition: all ease-in-out 0.1s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.task-input{
+color: #fff;
 }
 
-.card {
-  padding: 2em;
+.tsk-input label,.livraison label{
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+}
+.tsk-input input,.livraison input{
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    outline: none;
+}
+.livraison .upload{
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.incription-form input{
+border: 1px solid var(--bg-admin);
+outline: none;
+font-size: 20px;
+border-radius: 10px;
+padding: 10px 15px;
+color: var(--bg-admin);
+}
+
+.incription-form label{
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+   margin-left: 10px;
+   color: var(--bg-Body);
+}
+
+.incription-form button{
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--bg-admin);
+    color: #fff;
+    cursor: pointer;
 }
