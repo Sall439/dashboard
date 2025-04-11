@@ -1,0 +1,27 @@
+@import "tailwindcss";
+:root{
+  --bg-Body: rgb(59,74,97);
+  --sidebar: rgb(59,74,97);
+  --bg-admin: rgb(19,43,78);
+}
+.list_link li{
+  font-size: 24px;
+  font-weight: 800;
+}
+
+body{
+  background-color: var(--bg-Body);
+  /* color: #fff; */
+}
+.sidebar{
+  background-color: var(--sidebar);
+}
+
+.dasboard-admin{
+  background-color: #fff;
+  color: var(--bg-admin);
+}
+.navbar{
+  background-color: var(--bg-admin);
+  color: #fff;
+}
