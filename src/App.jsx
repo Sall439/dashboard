@@ -4,6 +4,7 @@
 import './App.css'
 
 import { ContentBoard } from "./Admin/ContentBoard"
+import { Inscription } from './Admin/Inscription/Inscription'
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -11,8 +12,8 @@ function App() {
 
   return (
       <div className="app">
-       {/* <Inscription/> */}
-       <ContentBoard/>
+       <Inscription/>
+       {/* <ContentBoard/> */}
       </div>
   )
 }
