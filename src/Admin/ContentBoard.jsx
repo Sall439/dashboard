@@ -1,4 +1,3 @@
-import { AddLivraison } from "./AddLivraison";
 import { NavbarAdmin } from "./NavbarAdmin";
 import { SidebarAmin } from "./SidebarAdmin";
 
@@ -10,8 +9,6 @@ export const ContentBoard = () => {
                 <NavbarAdmin/>
                 <div className="flex">
                     <SidebarAmin/>
-                    <AddLivraison/>
-
                 </div>
        
     </div>;

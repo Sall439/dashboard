@@ -1,6 +1,7 @@
 import React from 'react'
+import { AddLivraison } from './AddLivraison'
 
-const Navbar = () => {
+const Navbar = ({onAddLivraison}) => {
   return (
    <nav className='navbar'>
         <div className="left">
@@ -8,6 +9,9 @@ const Navbar = () => {
                 <p>User Panel</p>
         </div>
 
+        <div className="add-btn">
+          <AddLivraison onAddLivraison={onAddLivraison}/>
+        </div>
         <div className="right">
             <i className="fa-regular fa-envelope"></i>
             <i className="fa-regular fa-bell"></i>
