@@ -4,10 +4,6 @@
 import './App.css'
 
 import { ContentBoard } from "./Admin/ContentBoard"
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
-import Main from "./components/Main"
-import { useState } from 'react'
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -19,12 +15,9 @@ function App() {
   }
 
   return (
-      <div className="container">
+      <div className="app">
        {/* <Inscription/> */}
-       {/* <ContentBoard/> */}
-       <Navbar onAddLivraison={handleAddLivraison}/>
-       <Sidebar/>
-       <Main livraison={livraison}/>
+       <ContentBoard/>
       </div>
   )
 }
