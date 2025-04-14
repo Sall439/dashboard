@@ -40,7 +40,7 @@ body::-webkit-scrollbar{
 .container {
   display: grid;
   grid-template-columns: 250px 1fr 1fr 1fr;
-  grid-template-areas: "sidebar header header header"
+  grid-template-areas: "header header header header"
   "sidebar main main main";
   height: 100vh;
 }
@@ -51,9 +51,14 @@ body::-webkit-scrollbar{
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #fff;
-  color: rgb(59, 74, 97);
+  background-color:  rgb(19, 43, 78);
+  color: rgb(255, 255, 255);
   height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar .left {
@@ -78,9 +83,9 @@ body::-webkit-scrollbar{
 }
 
 .navbar .right i:hover {
-  background-color: rgb(19, 43, 78);
+  background-color: #fff;
   border-radius: 50%;
-  color: #fff;
+  color: rgb(19, 43, 78);
   padding: 10px;
 }
 
@@ -88,31 +93,13 @@ body::-webkit-scrollbar{
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  padding: 5px 0;
   height: 100vh;
-}
-
-#sidebar .title {
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  gap: 10px; 
-  text-align: center;
-  padding: 0px 10px;
-  background-color: rgb(19, 43, 78);
-  height: 60px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 250px;
-}
-
-#sidebar .title i {
-  font-size: 25px;
+  border-right: 1px solid black;
 }
 
 #sidebar h2 {
-  margin-top: 60px; 
+  margin-top: 100px; 
   text-align: center;
   font-weight: 500;
   font-size: 18px;
@@ -135,7 +122,7 @@ body::-webkit-scrollbar{
   background-color: rgb(19, 43, 78);
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 10px 0;
   box-shadow: 0px 0px 5px rgb(125, 136, 152);
   transition: 0.5s ease;
 }
@@ -150,14 +137,32 @@ body::-webkit-scrollbar{
   background-color: rgb(41, 73, 120);
 }
 
-.task-input{
-color: #fff;
+#sidebar ul li a {
+  color: #fff;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
 }
 
-.tsk-input label,.livraison label{
-    color: #fff;
-    font-weight: 700;
-    font-size: 24px;
+.main {
+  grid-area: main;
+  margin-left: 150px; 
+  margin-top: 60px;    
+  padding: 20px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+}
+
+
+.main .main-head {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 
@@ -172,6 +177,7 @@ color: #fff;
   justify-content: center;
   align-items: center;
   gap: 50px;
+  width: 100%;
 }
 
 .carts {
@@ -180,7 +186,7 @@ color: #fff;
   gap: 20px;
   border: 1px solid #ccc;
   padding: 30px;
-  width: 50%;
+  width: 250px;
   height: 100px;
   border-radius: 10px;
   cursor: pointer;
@@ -201,6 +207,7 @@ color: #fff;
   width: 80%;
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 #form .form input {

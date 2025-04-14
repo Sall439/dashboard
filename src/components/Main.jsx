@@ -1,10 +1,10 @@
 import React from 'react'
 import Carts from './Carts'
 import InputForm from './InputForm'
-import CartUser from './CartUser'
-import image from "../assets/1328670.jpeg"
+import LivraisonCard from './LicraisonCard'
 
-const Main = () => {
+
+const Main = ({livraison}) => {
   return (
     <div className='main'>
         <h1>Bienvenue sur Votre Dashboard</h1>
@@ -16,7 +16,10 @@ const Main = () => {
            </div>
             <div className='body'>
                 <InputForm/>
-                <CartUser username={"Saliou"} date={"10/02/2003"} title_img={"Attaque des titans"} img={image}/>
+               
+                {livraison.map((liv, index) => (
+                  <LivraisonCard key={index} livraison={liv}/>
+                ))}
             </div>
         </div>
     </div>
