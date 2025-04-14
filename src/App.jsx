@@ -14,11 +14,7 @@ import { InscriptionProvider } from './Admin/useContext/UseInscription.jsx'
 
 function App() {
   
-  const [livraison, setLivraison] = useState([])
-
-  const handleAddLivraison = (newLiv) => {
-    setLivraison(prev => [newLiv, ...prev]) 
-  }
+  
 
   return  <InscriptionProvider>
   <Router>
