@@ -1,16 +1,23 @@
 // import Navbar from "./components/Navbar"
-
 // import "animate.css"
 import './App.css'
 
 import { ContentBoard } from "./Admin/ContentBoard"
-import User from './components/User'
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   
+  const [livraison, setLivraison] = useState([])
+
+  const handleAddLivraison = (newLiv) => {
+    setLivraison(prev => [newLiv, ...prev]) 
+  }
+
   return (
-      <User/>
+      <div className="app">
+       {/* <Inscription/> */}
+       <ContentBoard/>
+      </div>
   )
 }
 
