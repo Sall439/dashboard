@@ -9,13 +9,14 @@ import { PrivateRoutes } from './protectionRoutes/PrivateRoutes'
 import { ContentBoard } from './Admin/ContentBoard'
 import { AcceuilAdmin } from './AcceuilAdmin/AcceuilAdmin'
 import { AddProgramm } from './Programmes/AddProgram'
-import { Users } from './components/Users/Users.jsx'
 import { InscriptionProvider } from './Admin/useContext/UseInscription.jsx'
+import { ListeUsers } from './Programmes/ListeUsers.jsx'
+import AddTache from './Admin/AddTasks/AjouterTaches.jsx'
+import  UsersWithTaches  from './Admin/tachesUsers/TasksUsers.jsx'
+import ToutesLesTaches from './Admin/tachesUsers/AllTasks.jsx'
+
 
 function App() {
-  
-  
-
   return  <InscriptionProvider>
   <Router>
     <div className="app">
@@ -27,18 +28,17 @@ function App() {
          <PrivateRoutes requiredRole={"admin"}>
         <ContentBoard/>
       </PrivateRoutes>
-        } />
-        <Route path="/acceuil" element={
-          <AcceuilAdmin/>
-        }/>
-        <Route path="/addprogram" element={
-          
-          <AddProgramm/>
-        }/>
-        
+        } >
+          <Route index element={<AcceuilAdmin/>} />
+          <Route path="addprogram" element={<AddProgramm/>} />
+          <Route path='ListUser' element={<ListeUsers/>}/>
+          <Route path='ajouterTaches' element={<AddTache/>}/>
+          <Route path='userswithtask' element={<UsersWithTaches/>}/>
+          <Route path='alltasks' element={<ToutesLesTaches/>}/>
+        </Route>
       <Route path="/users" element={
         <PrivateRoutes requiredRole={"user"}>
-          <Users/>
+          {/* <Users/> */}
         </PrivateRoutes>
         } />
     </Routes>
