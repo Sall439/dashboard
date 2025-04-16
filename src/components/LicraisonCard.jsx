@@ -23,14 +23,7 @@ const LivraisonCard = ({ livraison }) => {
       
 
       <div className="flex flex-wrap justify-center gap-2 mt-2">
-        {livraison.images.map((img, i) => (
-          <img
-            key={i}
-            src={URL.createObjectURL(img)}
-            alt={`image-${i}`}
-            className="w-24 h-24 object-cover rounded"
-          />
-        ))}
+    
       </div>
       <p className="text-gray-600 text-center mt-4">{livraison.description}</p>
 

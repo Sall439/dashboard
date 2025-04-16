@@ -2,6 +2,7 @@ import { FaTasks } from "react-icons/fa"
 import { TiDocumentText } from "react-icons/ti";
 import { FaFolder } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Deconnexion from "../Deconnexion/Deconnexion";
 export const SidebarAmin = () => {
     return <div className="w-[350px] bg-teal-400 h-screen  text-slate-50 sticky top-5 shadow-2xl sidebar">
          <ul className="justify-between  flex flex-col gap-5 list_link">
@@ -17,5 +18,6 @@ export const SidebarAmin = () => {
             <Link className="flex gap-2 items-center font-bold text-xl" to={"userswithtask"}> <TiDocumentText/>User-Tasks</Link>
             </div>
          </ul>
+        
     </div>
 }

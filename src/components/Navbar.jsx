@@ -1,5 +1,6 @@
 import React from 'react'
 import { AddLivraison } from './AddLivraison'
+import Deconnexion from '../Deconnexion/Deconnexion'
 
 const Navbar = ({onAddLivraison}) => {
   return (
@@ -16,6 +17,7 @@ const Navbar = ({onAddLivraison}) => {
             <i className="fa-regular fa-envelope"></i>
             <i className="fa-regular fa-bell"></i>
             <i className="fa-regular fa-user"></i>
+            <Deconnexion/>
         </div>
    </nav>
   )

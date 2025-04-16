@@ -1,82 +1,164 @@
-import { useRef, useState } from "react";
-import { MdCloudUpload } from "react-icons/md";
-import ReactDOM from "react-dom"
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
+export const AddLivraison = ({ onAddLivraison }) => {
+  const [showForm, setShowForm] = useState(false);
+  const [programmeId, setProgrammeId] = useState("");
+  const [tacheId, setTacheId] = useState("");
+  const [programmes, setProgrammes] = useState([]);
+  const [taches, setTaches] = useState([]);
+  const descRef = useRef();
+  const imgRef = useRef();
 
-export const AddLivraison = ({onAddLivraison}) => {
+  // 📦 Récupérer programmes + tâches en cours
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!showForm) return;
 
-    const [showForm, setShowForm] = useState(false)
+      const token = localStorage.getItem("token");
+      try {
+        const progRes = await axios.get("http://localhost:3000/user/mes-programmes", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setProgrammes(progRes.data);
 
-    const titleRef = useRef()
-    const descRef = useRef()
-    const imgRef = useRef()
+        const tacheRes = await axios.get("http://localhost:3000/user/mes-taches", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
-    const handleSubmitForm = (e) => {
-        e.preventDefault()
+        const enCours = tacheRes.data.filter((t) => t.status === "en_cours");
+        setTaches(enCours);
+      } catch (err) {
+        console.error("Erreur chargement :", err.message);
+      }
+    };
 
-        const newLivraison =  {
-            nom: "Saliou",
-            date: new Date().toLocaleString(),
-            description: descRef.current.value,
-            title: titleRef.current.value,
-            images: [...imgRef.current.files],
-            like: 0,
-            dislike: 0
-        }
+    fetchData();
+  }, [showForm]);
 
-        onAddLivraison(newLivraison)
-        setShowForm(false)
-        console.log("livarison envoye", newLivraison)
+  // 📤 Envoi de la livraison
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+
+    if (!programmeId || !tacheId) {
+      alert("Choisis un programme et une tâche");
+      return;
     }
 
+    const formData = new FormData();
+    formData.append("programme_id", programmeId);
+    formData.append("tache_id", tacheId);
+    formData.append("description", descRef.current.value || "");
+    Array.from(imgRef.current.files).forEach((file) =>
+      formData.append("captures", file)
+    );
 
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.post("http://localhost:3000/user/livraison", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-    return <div>
-        <button className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded" onClick={() => setShowForm(true)}>Envoyer une livraison</button>
+      alert("Livraison envoyée avec succès ✅");
+      onAddLivraison && onAddLivraison(res.data);
+      setShowForm(false);
+      setProgrammeId("");
+      setTacheId("");
+      descRef.current.value = "";
+      imgRef.current.value = null;
+    } catch (err) {
+      console.error("Erreur envoi :", err.message);
+      alert("Erreur lors de la livraison");
+    }
+  };
 
-        {showForm && <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-                <form
-                    onSubmit={handleSubmitForm}
-                    className="bg-white p-6 rounded-lg shadow-lg w-96 space-y-4"
-                >
-                    <h2 className="text-xl text-black font-semibold text-center">Nouvelle Livraison</h2>
-                    <input
-                    type="text"
-                    placeholder="Titre"
-                    ref={titleRef}
-                    className="w-full text-black outline-none border px-3 py-2 rounded"
-                    required
-                    />
-                    <textarea
-                    placeholder="Description"
-                    ref={descRef}
-                    className="w-full text-black outline-none border px-3 py-2 rounded"
-                    required
-                    />
-                    <input
-                    type="file"
-                    ref={imgRef}
-                    multiple
-                    accept="image/*"
-                    className="w-full border px-4 py-3 rounded text-black outline-none"
-                    required
-                        />
-                    <div className="flex justify-between">
-                    <button
-                        type="submit"
-                        className="bg-green-500 text-white px-4 py-2 rounded"
-                    >
-                        Confirmer
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => setShowForm(false)}
-                        className="bg-red-500 text-white px-4 py-2 rounded"
-                    >
-                        Annuler
-                    </button>
-                    </div>
-                </form>
-        </div>}
+  return (
+    <div>
+      <button
+        className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded"
+        onClick={() => setShowForm(true)}
+      >
+        📤 Livrer mon travail
+      </button>
+
+      {showForm && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+          <form
+            onSubmit={handleSubmitForm}
+            className="bg-white p-6 rounded-lg shadow-lg w-96 space-y-4"
+          >
+            <h2 className="text-xl text-black font-semibold text-center">
+              Nouvelle Livraison
+            </h2>
+
+            {/* 🔽 Sélection du programme */}
+            <select
+              value={programmeId}
+              onChange={(e) => setProgrammeId(e.target.value)}
+              className="w-full border p-2 text-black rounded"
+              required
+            >
+              <option value="">-- Choisir un programme --</option>
+              {programmes.map((prog) => (
+                <option key={prog.id} value={prog.id}>
+                  {prog.titre}
+                </option>
+              ))}
+            </select>
+
+            {/* 🔽 Sélection de la tâche en cours */}
+            <select
+              value={tacheId}
+              onChange={(e) => setTacheId(e.target.value)}
+              className="w-full border p-2 text-black rounded"
+              required
+            >
+              <option value="">-- Choisir une tâche en cours --</option>
+              {taches.map((tache) => (
+                <option key={tache.id} value={tache.id}>
+                  {tache.titre}
+                </option>
+              ))}
+            </select>
+
+            {/* 📝 Description */}
+            <textarea
+              placeholder="Description (optionnelle)"
+              ref={descRef}
+              className="w-full text-black outline-none border px-3 py-2 rounded"
+            />
+
+            {/* 📸 Upload fichiers */}
+            <input
+              type="file"
+              ref={imgRef}
+              multiple
+              accept="image/*"
+              className="w-full border px-4 py-3 rounded text-black outline-none"
+              required
+            />
+
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className="bg-green-500 text-white px-4 py-2 rounded"
+              >
+                Confirmer
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowForm(false)}
+                className="bg-red-500 text-white px-4 py-2 rounded"
+              >
+                Annuler
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
-}
+  );
+};

@@ -18,10 +18,21 @@ export const InscriptionProvider = ({ children }) => {
             ));
     };
 
+    const [livraison, setLivraison] = useState([])
+    const [showModal, setShowModal] = useState(false);
+  const handleAddLivraison = (newLiv) => {
+    setLivraison(prev => [newLiv, ...prev]) 
+  }
     // navigate
     // const navigate = useNavigate()
    
-    const values ={authen,handleChange,setAuthen};
+    const values ={
+        authen,handleChange,
+        setAuthen,livraison,
+        handleAddLivraison,
+        showModal,
+        setShowModal
+    };
     return <ContextInscription.Provider value={values}>{children}</ContextInscription.Provider>;
 }
 

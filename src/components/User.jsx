@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
-
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
+import Main from './Main'
+import { Outlet } from 'react-router-dom'
+import { useContextInscription } from '../Admin/useContext/UseInscription'
 const User = () => {
 
-    const [livraison, setLivraison] = useState([])
-
-  const handleAddLivraison = (newLiv) => {
-    setLivraison(prev => [newLiv, ...prev]) 
-  }
+  const {handleAddLivraison} = useContextInscription()
 
 
   return (
-    <div className="container">
+    <div className="container w-full p-4">
        <Navbar onAddLivraison ={handleAddLivraison}/>
+       <div className='flex'>
        <Sidebar/>
-       <Main livraison = {livraison}/>
+       <Outlet/>
+       </div>
       </div>
   )
 }

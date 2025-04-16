@@ -19,9 +19,7 @@
 }
 
 * {
-  /* padding: 0;
-  margin: 0;
-  box-sizing: border-box; */
+  
   list-style-type: none;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
@@ -37,13 +35,13 @@ body::-webkit-scrollbar{
   display: none;
 }
 
-.container {
+/* .container {
   display: grid;
   grid-template-columns: 250px 1fr 1fr 1fr;
   grid-template-areas: "header header header header"
   "sidebar main main main";
   height: 100vh;
-}
+} */
 
 .navbar {
   grid-area: header;
@@ -102,7 +100,7 @@ body::-webkit-scrollbar{
   margin-top: 100px; 
   text-align: center;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 28px;
 }
 
 #sidebar hr {
@@ -154,7 +152,7 @@ body::-webkit-scrollbar{
   gap: 20px;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 60px);
+  /* min-height: calc(100vh - 60px); */
 }
 
 
