@@ -52,7 +52,7 @@ const ToutesLesTaches = () => {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6 max-w-5xl mx-auto allTaskAdmin">
       <h1 className="text-2xl font-bold mb-4">Toutes les tâches</h1>
       <table className="w-full border">
         <thead>

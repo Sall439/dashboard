@@ -53,11 +53,11 @@ export const ListeUsers = () => {
         <tbody>
          {users.map((user,index)=>{
             return <tr key={user.id}>
-                <td className="border border-collapse p-2">{index+1}</td>
-                <td className="border border-collapse p-2">{user.nom}</td>
-                <td className="border border-collapse p-2">{user.prenom}</td>
-                <td className="border border-collapse p-2">{user.email}</td>
-                <td className="border border-collapse p-2">
+                <td className="border border-collapse p-2 truncate max-w-[100px] sm:max-w-[200px] md:max-w-[300px]">{index+1}</td>
+                <td className="border border-collapse p-2 truncate max-w-[100px] sm:max-w-[200px] md:max-w-[300px]">{user.nom}</td>
+                <td className="border border-collapse p-2 truncate max-w-[100px] sm:max-w-[200px] md:max-w-[300px]">{user.prenom}</td>
+                <td className="border border-collapse p-2 truncate max-w-[100px] sm:max-w-[200px] md:max-w-[300px]">{user.email}</td>
+                <td className="border border-collapse p-2 truncate max-w-[100px] sm:max-w-[200px] md:max-w-[300px]">
                   
                  <select
                   value={user.role}
@@ -67,7 +67,6 @@ export const ListeUsers = () => {
                   <option value="user" className="text-black">user</option>
                   <option value="admin" className="text-black">admin</option>
                 </select>
-                    {/* {user.role} */}
                  </td>
             </tr>
          })}

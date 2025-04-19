@@ -37,7 +37,7 @@ const navigate = useNavigate()
             <h1 className="text-center font-bold text-4xl shadow-2xl rounded-[10px] text-[rgb(19,43,78)]">Inscrivez-vous </h1>
         </div>
         <form  className="incription-form p-2 " onSubmit={handleSubmit}>
-            <div className="flex gap-4 w-full ">
+            <div className="flex gap-4 w-full content-input">
               <div className="mb-3 w-full">
                 <label htmlFor="nom" className="block w-full">Nom</label>
                 <input type="text" name="name" id="nom" className="w-full p-2"
@@ -50,7 +50,7 @@ const navigate = useNavigate()
               </div>
 
             </div>
-            <div className="flex gap-4 w-full">
+            <div className="flex gap-4 w-full content-input">
               <div className="mb-3  w-full">
                 <label htmlFor="passworld" className="block w-full">Mot de passe</label>
                 <input type="password" name="password" id="passworld" className="w-full p-2"

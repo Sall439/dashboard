@@ -12,7 +12,7 @@ const Deconnexion = () => {
   return (
     <button
       onClick={handleLogout}
-      className="text-white px-4 py-2 text-sm"
+      className="text-white px-4 py-2 text-sm cursor-pointer font-bold rounded-md hover:bg-gray-600"
     >
       Se déconnecter
     </button>
@@ -20,3 +20,7 @@ const Deconnexion = () => {
 };
 
 export default Deconnexion;
+
+
+
+

@@ -24,3 +24,10 @@
         cursor: pointer;
     }
     
+    @media screen and (max-width: 768px) {
+        .incription-form .content-input{
+            display: block;
+            width: 100%;
+        }
+        
+    }

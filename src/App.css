@@ -35,13 +35,6 @@ body::-webkit-scrollbar{
   display: none;
 }
 
-/* .container {
-  display: grid;
-  grid-template-columns: 250px 1fr 1fr 1fr;
-  grid-template-areas: "header header header header"
-  "sidebar main main main";
-  height: 100vh;
-} */
 
 .navbar {
   grid-area: header;
@@ -277,4 +270,54 @@ body::-webkit-scrollbar{
     background-color: var(--bg-admin);
     color: #fff;
     cursor: pointer;
+}
+.sidebar {
+  transition: all 0.8s ease-in-out;
+}
+
+.menu{
+  display: none;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+    width: 100%;
+  }
+
+  .sidebar ul  {
+    font-size: 20px;
+  }
+  .navbarAmin{
+    font-size: 18px;
+  }
+
+  .navbarAmin .icons{
+   display: none;
+  }
+
+  .menu{  
+    display: block;
+    cursor: pointer;
+  }
+
+  .active{
+    display: block;
+  }
+
+  .allTaskAdmin{
+    padding: 5px;
+    width: 100%;
+  }
+
+  .addprogram{
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .addprogram input, .addprogram button,.addinput{
+    width: 100%;
+  }
 }
