@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContextInscription } from "../useContext/UseInscription";
 export const Inscription = () => {
 
- const {authen,handleChange}=useContextInscription(); 
+ const {authen,handleChange,url}=useContextInscription(); 
  console.log(authen);
 const navigate = useNavigate()
  const handleSubmit = async (e) => {
@@ -16,7 +16,7 @@ const navigate = useNavigate()
       return;
   }
   try{
-      const response = await axios.post("http://localhost:3000/auth/register", authen)
+      const response = await axios.post(`${url}/auth/register`, authen)
       if(response.status === 201){
           navigate("/login")
       }

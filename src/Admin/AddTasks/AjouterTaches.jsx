@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContextInscription } from "../useContext/UseInscription";
 
 const AddTache = () => {
   const [titre, setTitre] = useState("");
@@ -9,15 +10,18 @@ const AddTache = () => {
   const [programmes, setProgrammes] = useState([]);
   const [users, setUsers] = useState([]);
 
+  const {url}= useContextInscription()
+  console.log("url backend", url);
+  
   // Récupérer programmes et users au chargement
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const progRes = await axios.get("http://localhost:3000/admin/programmes", {
+        const progRes = await axios.get(`${url}/admin/programmes`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        const userRes = await axios.get("http://localhost:3000/admin/users", {
+        const userRes = await axios.get(`${url}/admin/users`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProgrammes(progRes.data);
@@ -30,8 +34,8 @@ const AddTache = () => {
     fetchData();
   }, []);
 
-  console.log("les programmes", programmes);
-  console.log("les users", users);
+  // console.log("les programmes", programmes);
+  // console.log("les users", users);
   
   
   const handleSubmit = async (e) => {
@@ -43,7 +47,7 @@ const AddTache = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:3000/admin/tasks", {
+      const response = await axios.post(`${url}/admin/tasks`, {
         titre,
         description,
         programmeId,
@@ -120,7 +124,7 @@ const AddTache = () => {
 
         </div>
 
-        <button type="submit" className="bg-[var(--bg-admin)] text-white p-2 rounded w-full">
+        <button type="submit" className="bg-[var(--bg-admin)] text-white p-2 rounded w-full cursor-pointer">
           Ajouter la tâche
         </button>
       </form>

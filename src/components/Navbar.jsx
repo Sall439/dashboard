@@ -1,6 +1,7 @@
 import React from 'react'
 import { AddLivraison } from './AddLivraison'
 import Deconnexion from '../Deconnexion/Deconnexion'
+import { IoMenu } from 'react-icons/io5'
 
 const Navbar = ({onAddLivraison}) => {
   return (
@@ -19,6 +20,12 @@ const Navbar = ({onAddLivraison}) => {
             <i className="fa-regular fa-user"></i>
             <Deconnexion/>
         </div>
+        <IoMenu className='menu' onClick={() => {
+          const sidebar = document.querySelector("#sidebar");
+          sidebar.classList.toggle("active");
+          console.log(sidebar);
+          
+        }}/>
    </nav>
   )
 }

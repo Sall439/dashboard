@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContextInscription } from "../../Admin/useContext/UseInscription";
 
 const MesTaches = () => {
   const [taches, setTaches] = useState([]);
+  const {url} = useContextInscription()
 
-  // 🔁 Récupération des tâches au chargement
+  // Récupération des tâches au chargement
   useEffect(() => {
     fetchTaches();
   }, []);
@@ -12,7 +14,7 @@ const MesTaches = () => {
   const fetchTaches = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("http://localhost:3000/user/mes-taches", {
+      const res = await axios.get(`${url}/user/mes-taches`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log("données récupérées", res.data);
@@ -26,7 +28,7 @@ const MesTaches = () => {
   const handleStart = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.put(`http://localhost:3000/user/taches/${id}/start`, null, {
+      await axios.put(`${url}/user/taches/${id}/start`, null, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchTaches(); // refresh les données après action
@@ -39,7 +41,7 @@ const MesTaches = () => {
   const handleTerminer = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.put(`http://localhost:3000/user/taches/${id}/complete`, null, {
+      await axios.put(`${url}/user/taches/${id}/complete`, null, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchTaches(); // refresh

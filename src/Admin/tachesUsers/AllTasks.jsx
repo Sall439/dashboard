@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContextInscription } from "../useContext/UseInscription";
 
 const ToutesLesTaches = () => {
   const [taches, setTaches] = useState([]);
   const [users, setUsers] = useState([]);
   const [assigningId, setAssigningId] = useState(null);
+  const {url} = useContextInscription()
 
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
       try {
         const [resTaches, resUsers] = await Promise.all([
-          axios.get("http://localhost:3000/admin/taches", {
+          axios.get(`${url}/admin/taches`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:3000/admin/users", {
+          axios.get(`${url}/admin/users`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -32,7 +34,7 @@ const ToutesLesTaches = () => {
     const token = localStorage.getItem("token");
     try {
       await axios.put(
-        `http://localhost:3000/admin/taches/${tacheId}/assign`,
+        `${url}/admin/taches/${tacheId}/assign`,
         { assignee_id },
         {
           headers: { Authorization: `Bearer ${token}` },

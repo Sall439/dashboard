@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useContextInscription } from "../Admin/useContext/UseInscription";
 
 export const AddLivraison = ({ onAddLivraison }) => {
   const [showForm, setShowForm] = useState(false);
@@ -10,19 +11,21 @@ export const AddLivraison = ({ onAddLivraison }) => {
   const descRef = useRef();
   const imgRef = useRef();
 
-  // 📦 Récupérer programmes + tâches en cours
+  const { url } = useContextInscription();
+
+  // Récupérer programmes + tâches en cours
   useEffect(() => {
     const fetchData = async () => {
       if (!showForm) return;
 
       const token = localStorage.getItem("token");
       try {
-        const progRes = await axios.get("http://localhost:3000/user/mes-programmes", {
+        const progRes = await axios.get(`${url}/user/mes-programmes`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProgrammes(progRes.data);
 
-        const tacheRes = await axios.get("http://localhost:3000/user/mes-taches", {
+        const tacheRes = await axios.get(`${url}/user/mes-taches`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -34,9 +37,9 @@ export const AddLivraison = ({ onAddLivraison }) => {
     };
 
     fetchData();
-  }, [showForm]);
+  }, []);
 
-  // 📤 Envoi de la livraison
+  // Envoi de la livraison
   const handleSubmitForm = async (e) => {
     e.preventDefault();
 
@@ -55,14 +58,14 @@ export const AddLivraison = ({ onAddLivraison }) => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post("http://localhost:3000/user/livraison", formData, {
+      const res = await axios.post(`${url}/user/livraison`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
       });
 
-      alert("Livraison envoyée avec succès ✅");
+      alert("Livraison envoyée avec succès");
       onAddLivraison && onAddLivraison(res.data);
       setShowForm(false);
       setProgrammeId("");
@@ -78,10 +81,10 @@ export const AddLivraison = ({ onAddLivraison }) => {
   return (
     <div>
       <button
-        className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded"
+        className="bg-slate-50 text-[#000] p-1 rounded"
         onClick={() => setShowForm(true)}
       >
-        📤 Livrer mon travail
+        Livrer mon travail
       </button>
 
       {showForm && (
@@ -124,14 +127,14 @@ export const AddLivraison = ({ onAddLivraison }) => {
               ))}
             </select>
 
-            {/* 📝 Description */}
+            {/* wDescription */}
             <textarea
               placeholder="Description (optionnelle)"
               ref={descRef}
               className="w-full text-black outline-none border px-3 py-2 rounded"
             />
 
-            {/* 📸 Upload fichiers */}
+            {/*Upload fichiers */}
             <input
               type="file"
               ref={imgRef}
@@ -144,14 +147,14 @@ export const AddLivraison = ({ onAddLivraison }) => {
             <div className="flex justify-between">
               <button
                 type="submit"
-                className="bg-green-500 text-white px-4 py-2 rounded"
+                className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
               >
                 Confirmer
               </button>
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
               >
                 Annuler
               </button>

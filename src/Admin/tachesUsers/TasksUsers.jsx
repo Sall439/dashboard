@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContextInscription } from "../useContext/UseInscription";
 
 const UsersWithTaches = () => {
   const [users, setUsers] = useState([]);
   const [opened, setOpened] = useState(null); 
-
+const {url} = useContextInscription()
   useEffect(() => {
     const fetchAll = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("http://localhost:3000/admin/users-taches", {
+        const res = await axios.get(`${url}/admin/users-taches`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUsers(res.data);

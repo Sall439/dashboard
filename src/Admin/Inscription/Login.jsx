@@ -4,14 +4,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-    const {authen,handleChange}=useContextInscription();
+    const {authen,handleChange,url}=useContextInscription();
 const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
        
         try{
-            const response = await axios.post("http://localhost:3000/auth/login", authen)
+            const response = await axios.post(`${url}/auth/login`, authen)
 
             localStorage.setItem("token",response.data.token)
             localStorage.setItem("role",response.data.role)

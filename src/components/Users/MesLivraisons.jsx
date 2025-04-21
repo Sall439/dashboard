@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContextInscription } from "../../Admin/useContext/UseInscription";
 
 export const MesLivraisons = () => {
   const [livraisons, setLivraisons] = useState([]);
+  const { url } = useContextInscription();
 
   useEffect(() => {
     const fetchLivraisons = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("http://localhost:3000/user/mes-livraisons", {
+        const res = await axios.get(`${url}/user/mes-livraisons`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setLivraisons(res.data);
@@ -46,7 +48,7 @@ export const MesLivraisons = () => {
                   {l.fichiers.map((img, index) => (
                     <img
                       key={index}
-                      src={`http://localhost:3000/uploads/${img}`}
+                      src={`${url}/uploads/${img}`}
                       alt="capture"
                       className="w-full h-full object-cover rounded"
                     />

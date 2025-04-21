@@ -31,14 +31,15 @@ const Main = () => {
 
     fetchStats();
   }, []);
-  const {livraison}= useContextInscription()
+  // const {livraison}= useContextInscription()
   return (
     <div className='w-full flex flex-col'>
-    <div className='main w-full sticky top-0'>
+    <div className='main w-full static md:sticky md:top-0'>
       
         <h1 className='main-title text-center text-3xl font-bold'>Bienvenue sur Votre Dashboard</h1>
         <div className='main-head w-full'>
            <div className='head1 w-full'>
+
            <div className="carts flex-auto bg-[#fff] text-[#333] text-xl font-bold">
             <FaTasks/>
             <h2>Taches</h2>
@@ -58,9 +59,7 @@ const Main = () => {
            </div>
             <div className='body'>
                 <InputForm/>
-                {/* {livraison.map((liv, index) => (
-                  <LivraisonCard key={index} livraison={liv}/>
-                ))} */}
+               
             </div>
         </div>
     </div>

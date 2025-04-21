@@ -23,6 +23,8 @@ export const InscriptionProvider = ({ children }) => {
   const handleAddLivraison = (newLiv) => {
     setLivraison(prev => [newLiv, ...prev]) 
   }
+
+  const url = 'http://localhost:3000'
     // navigate
     // const navigate = useNavigate()
    
@@ -31,7 +33,8 @@ export const InscriptionProvider = ({ children }) => {
         setAuthen,livraison,
         handleAddLivraison,
         showModal,
-        setShowModal
+        setShowModal,
+        url
     };
     return <ContextInscription.Provider value={values}>{children}</ContextInscription.Provider>;
 }
