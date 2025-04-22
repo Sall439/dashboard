@@ -24,7 +24,7 @@ export const InscriptionProvider = ({ children }) => {
     setLivraison(prev => [newLiv, ...prev]) 
   }
 
-  const url = 'http://localhost:3000'
+  const url = 'https://serveur-dashboard.onrender.com'
     // navigate
     // const navigate = useNavigate()
    
