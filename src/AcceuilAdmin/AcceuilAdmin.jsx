@@ -4,7 +4,10 @@ import axios from "axios";
 import { FaUsers } from "react-icons/fa6";
 import { MdTask } from "react-icons/md";
 import { BsListTask } from "react-icons/bs";
+import { useContextInscription } from "../Admin/useContext/UseInscription";
 export const AcceuilAdmin = () => {
+
+  const {url}= useContextInscription()
     const [stats, setStats] = useState({
         taches: 0,
         programmes: 0,
@@ -14,7 +17,7 @@ export const AcceuilAdmin = () => {
         const fetchStats = async () => {
           const token = localStorage.getItem("token");
           try {
-            const res = await axios.get("http://localhost:3000/admin/stats", {
+            const res = await axios.get(`${url}/admin/stats`, {
               headers: {
                 Authorization: `Bearer ${token}`
               }

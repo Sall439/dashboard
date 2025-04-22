@@ -25,6 +25,7 @@ export const InscriptionProvider = ({ children }) => {
   }
 
   const url = 'https://serveur-dashboard.onrender.com'
+  // const url = 'http://localhost:3000'
 
     const values ={
         authen,handleChange,
