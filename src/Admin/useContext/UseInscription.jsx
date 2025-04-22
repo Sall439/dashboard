@@ -25,9 +25,7 @@ export const InscriptionProvider = ({ children }) => {
   }
 
   const url = 'https://serveur-dashboard.onrender.com'
-    // navigate
-    // const navigate = useNavigate()
-   
+
     const values ={
         authen,handleChange,
         setAuthen,livraison,
