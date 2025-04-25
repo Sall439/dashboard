@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
+import { useContextInscription } from "../Admin/useContext/UseInscription";
 
 export const AddProgramm = () => {
     const [titre, setTitre] = useState("")
-
+    const {url} = useContextInscription()
     const handleSubmit = async (e) =>{
         e.preventDefault()
         if(!titre) return;
         try{
             
-         const response = await axios.post("http://localhost:3000/admin/programme", 
+         const response = await axios.post(`${url}/admin/programme`, 
             {titre},
             {
                 headers: {
