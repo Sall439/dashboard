@@ -1,14 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import { useContextInscription } from "../Admin/useContext/UseInscription";
 
 export const ListeUsers = () => {
     const [users, setUsers] = useState([])
-
+  const {url} = useContextInscription()
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const userRes = await axios.get("http://localhost:3000/admin/utilisateurs", {
+                const userRes = await axios.get(`${url}/admin/utilisateurs`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUsers(userRes.data);
@@ -24,7 +25,7 @@ export const ListeUsers = () => {
         const token = localStorage.getItem("token");
         try {
           await axios.put(
-            `http://localhost:3000/admin/users/${userId}/role`,
+            `${url}/admin/users/${userId}/role`,
             { role: newRole },
             { headers: { Authorization: `Bearer ${token}` } }
           );
