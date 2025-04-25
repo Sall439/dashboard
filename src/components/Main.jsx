@@ -10,6 +10,7 @@ import axios from 'axios'
 
 
 const Main = () => {
+  const {url} = useContextInscription()
   const [stats, setStats] = useState({
     totalTaches: 0,
     tachesTerminees: 0,
@@ -20,7 +21,7 @@ const Main = () => {
     const fetchStats = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("http://localhost:3000/user/dashboard", {
+        const res = await axios.get(`${url}/user/dashboard`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStats(res.data);
