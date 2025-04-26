@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useContextInscription } from '../Admin/useContext/UseInscription'
 
 const InputForm = () => {
 
-  const [search, setSearch] = useState('')
+ const {filterName, setFilterName} = useContextInscription()
   return (
     <form id='form'>
         <div className='form'>
             <i className="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder='Rechercher une livraison...' value={''} onChange={(e) => setSearch(e.target.value)}/>
+            <input type="text" placeholder='Rechercher une livraison...' value={filterName} onChange={(e) => setFilterName(e.target.value)}/>
         </div>
     </form>
   )

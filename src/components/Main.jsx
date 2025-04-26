@@ -35,7 +35,7 @@ const Main = () => {
   // const {livraison}= useContextInscription()
   return (
     <div className='w-full flex flex-col'>
-    <div className='main w-full static md:sticky md:top-0'>
+    <div className='main w-full'>
       
         <h1 className='main-title text-center text-3xl font-bold'>Bienvenue sur Votre Dashboard</h1>
         <div className='main-head w-full'>

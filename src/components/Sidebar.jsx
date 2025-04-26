@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaFolder, FaHome, FaTasks } from "react-icons/fa";
 const Sidebar = () => {
 
   return (
@@ -15,9 +16,9 @@ const Sidebar = () => {
             </a>
         </li>
         <div className="flex flex-col gap-5">
-        <Link to={'/users'} className='text-2xl font-bold'> Acceuil</Link>
-        <Link to={'mestaches'} className='text-2xl font-bold'> Mes Taches</Link>
-        <Link to={'meslivraison'} className='text-2xl font-bold'> Mes Livraisoin</Link>
+        <Link to={'/users'} className='text-2xl font-bold flex items-center gap-2'><FaHome/> Acceuil</Link>
+        <Link to={'mestaches'} className='text-2xl font-bold flex items-center gap-2'><FaTasks /> Mes Taches</Link>
+        <Link to={'meslivraison'} className='text-2xl font-bold flex items-center gap-2'><FaFolder /> Mes Livraisoin</Link>
 
         </div>
        </ul>

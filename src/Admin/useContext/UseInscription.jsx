@@ -18,8 +18,10 @@ export const InscriptionProvider = ({ children }) => {
             ));
     };
 
+    const [filterName, setFilterName] = useState('');
     const [livraison, setLivraison] = useState([])
     const [showModal, setShowModal] = useState(false);
+
   const handleAddLivraison = (newLiv) => {
     setLivraison(prev => [newLiv, ...prev]) 
   }
@@ -33,7 +35,9 @@ export const InscriptionProvider = ({ children }) => {
         handleAddLivraison,
         showModal,
         setShowModal,
-        url
+        url,
+        filterName,
+        setFilterName
     };
     return <ContextInscription.Provider value={values}>{children}</ContextInscription.Provider>;
 }

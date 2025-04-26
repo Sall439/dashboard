@@ -24,11 +24,10 @@ export const AddLivraison = ({ onAddLivraison }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProgrammes(progRes.data);
-
         const tacheRes = await axios.get(`${url}/user/mes-taches`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-
+        
         const enCours = tacheRes.data.filter((t) => t.status === "en_cours");
         setTaches(enCours);
       } catch (err) {
@@ -37,7 +36,11 @@ export const AddLivraison = ({ onAddLivraison }) => {
     };
 
     fetchData();
-  }, []);
+  }, [showForm]);
+  console.log("programmes", programmes);
+  console.log("taches", taches);
+  console.log("tachesId", tacheId);
+  console.log("programmeId", programmeId);
 
   // Envoi de la livraison
   const handleSubmitForm = async (e) => {
@@ -55,6 +58,7 @@ export const AddLivraison = ({ onAddLivraison }) => {
     Array.from(imgRef.current.files).forEach((file) =>
       formData.append("captures", file)
     );
+console.log("formData", formData);
 
     try {
       const token = localStorage.getItem("token");
@@ -65,6 +69,8 @@ export const AddLivraison = ({ onAddLivraison }) => {
         },
       });
 
+      console.log("Livraison envoyée", res.data);
+      
       alert("Livraison envoyée avec succès");
       onAddLivraison && onAddLivraison(res.data);
       setShowForm(false);
@@ -77,6 +83,10 @@ export const AddLivraison = ({ onAddLivraison }) => {
       alert("Erreur lors de la livraison");
     }
   };
+
+  // if (!showForm) return null;
+  console.log("tacheId", tacheId);
+  
 
   return (
     <div>

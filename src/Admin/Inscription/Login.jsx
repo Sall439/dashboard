@@ -12,7 +12,8 @@ const navigate = useNavigate()
        
         try{
             const response = await axios.post(`${url}/auth/login`, authen)
-
+            console.log("donnes envoyer",response.data);
+            
             localStorage.setItem("token",response.data.token)
             localStorage.setItem("role",response.data.role)
             if(response.data.role === "admin"){

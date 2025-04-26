@@ -4,7 +4,7 @@ import { useContextInscription } from "../../Admin/useContext/UseInscription";
 
 const AlLivraisons = () => {
   const [livraisons, setLivraisons] = useState([]);
-const {url}= useContextInscription()
+const {url,filterName}= useContextInscription()
   useEffect(() => {
     const fetchLivraisons = async () => {
       try {
@@ -22,10 +22,14 @@ const {url}= useContextInscription()
   }, []);
 console.log("livraison photo",livraisons);
 
+// const filterLivraisons = () => {
+  const filteredLivraisons = livraisons.filter((livraison) => livraison.nom.toLowerCase().includes(filterName.toLowerCase()));
+// };
+
   return (  
-    <div className="p-6 max-w-6xl mx-auto mt-8 w-full">
+    <div className="p-6 max-w-6xl mx-auto mt-8 w-[80%]">
       <h2 className="text-2xl font-bold mb-4"> Livraisons récentes</h2>
-      {livraisons.map((livraison) => (
+      {filteredLivraisons.map((livraison) => (
         <div
           key={livraison.id}
           className="bg-white border shadow rounded-lg mb-4 p-4 w-80%"
@@ -69,6 +73,7 @@ console.log("livraison photo",livraisons);
 
         </div>
       ))}
+    {filteredLivraisons.length===0 && <p className="text-center text-gray-500">Aucune livraison pour le moment.</p>}
     </div>
   );
 };
