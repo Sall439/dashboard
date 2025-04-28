@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useContextInscription } from "../../Admin/useContext/UseInscription";
+import { BiDislike, BiLike, BiSolidDislike, BiSolidLike } from "react-icons/bi";
 
 const AlLivraisons = () => {
-  const [livraisons, setLivraisons] = useState([]);
+const [userVotes, setUserVotes] = useState({})
+
+const [livraisons, setLivraisons] = useState([]);
 const {url,filterName}= useContextInscription()
   useEffect(() => {
     const fetchLivraisons = async () => {
@@ -20,7 +23,23 @@ const {url,filterName}= useContextInscription()
 
     fetchLivraisons();
   }, []);
-console.log("livraison photo",livraisons);
+// console.log("livraison photo",livraisons);
+
+
+const handleVote = async (livraisonId, voteType) => {
+  try {
+    const token = localStorage.getItem("token");
+    await axios.post(`${url}/user/vote`, 
+      { livraisonId, voteType }, 
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    console.log(`Vote ${voteType} envoyé pour livraison ${livraisonId}`);
+    setUserVotes(prevVotes => ({ ...prevVotes, [livraisonId]: voteType }));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
 // const filterLivraisons = () => {
   const filteredLivraisons = livraisons.filter((livraison) => livraison.nom.toLowerCase().includes(filterName.toLowerCase()));
@@ -70,6 +89,24 @@ console.log("livraison photo",livraisons);
     </div>
   )
 }
+<div className="flex gap-3">
+  <button 
+    className={`flex-auto p-2 cursor-pointer  text-white rounded-2xl flex items-center justify-center gap-1 
+    ${userVotes[livraison.id] === 'like' ? 'bg-green-600' : 'bg-[rgb(19,43,78)] opacity-45'}`} 
+    onClick={() => handleVote(livraison.id, "like")}
+  >
+    <BiSolidLike /> Like
+  </button>
+
+  <button 
+    className={`flex-auto p-2 cursor-pointer  text-white rounded-2xl flex items-center justify-center gap-1 
+    ${userVotes[livraison.id] === 'dislike' ? 'bg-red-600' : 'bg-[rgb(19,43,78)] opacity-45'}`} 
+    onClick={() => handleVote(livraison.id, "dislike")}
+  >
+    <BiSolidDislike /> Dislike
+  </button>
+</div>
+
 
         </div>
       ))}
