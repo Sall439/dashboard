@@ -18,6 +18,7 @@ import MesTaches from './components/Users/TachesUsers.jsx'
 import Main from './components/Main.jsx'
 import AlLivraisons from './components/Users/AllLivraison.jsx'
 import { MesLivraisons } from './components/Users/MesLivraisons.jsx'
+import { ListesProgram } from './Programmes/ListesProgram.jsx'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         } >
           <Route index element={<AcceuilAdmin/>} />
           <Route path="addprogram" element={<AddProgramm/>} />
+          <Route path="listeProgramme" element={<ListesProgram/>} />
           <Route path='ListUser' element={<ListeUsers/>}/>
           <Route path='ajouterTaches' element={<AddTache/>}/>
           <Route path='userswithtask' element={<UsersWithTaches/>}/>
@@ -52,7 +54,6 @@ function App() {
     </Routes>
     </div>
   </Router>
-
 </InscriptionProvider>
 }
 
