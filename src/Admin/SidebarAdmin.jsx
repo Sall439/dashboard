@@ -22,6 +22,7 @@ export const SidebarAmin = () => {
             <Link className=" flex gap-2 items-center font-bold text-xl link" to={"/admin"}> <FaTasks/>Acceuil</Link>
             <Link className=" flex gap-2 items-center font-bold text-xl link" to={"ListUser"}> <FaTasks/>utilisateurs</Link>
             <Link className="flex gap-2 items-center font-bold text-xl link" to={"addprogram"}> <TiDocumentText/>Add Programmes</Link>
+            <Link className="flex gap-2 items-center font-bold text-xl link" to={"listeProgramme"}> <TiDocumentText/>Programmes</Link>
             <Link className="flex gap-2 items-center font-bold text-xl link" to={"ajouterTaches"}> <TiDocumentText/>ajouter Taches</Link>
             <Link className="flex gap-2 items-center font-bold text-xl link" to={"alltasks"}> <TiDocumentText/>listes Taches</Link>
             <Link className="flex gap-2 items-center font-bold text-xl link" to={"userswithtask"}> <TiDocumentText/>User-Tasks</Link>
