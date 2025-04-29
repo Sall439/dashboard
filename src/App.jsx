@@ -28,14 +28,12 @@ function App() {
     <Routes>
       <Route path="/" element={<Inscription/>} />
       <Route path="/login" element={<Login/>} />
-
       <Route path="/admin" element={
          <PrivateRoutes requiredRole={"admin"}>
         <ContentBoard/>
       </PrivateRoutes>
         } >
           <Route index element={<AcceuilAdmin/>} />
-          <Route path="addprogram" element={<AddProgramm/>} />
           <Route path="listeProgramme" element={<ListesProgram/>} />
           <Route path='ListUser' element={<ListeUsers/>}/>
           <Route path='ajouterTaches' element={<AddTache/>}/>
